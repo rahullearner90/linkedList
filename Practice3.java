@@ -82,6 +82,35 @@ class Practice3{
         temp.next=temp.next.next;
         return;
     }
+    // implementation of Reversal of a Node in a Linked List
+    public void reverseLL(){
+        Node current=head;
+        Node prePtr=null;
+        Node nextPtr=null;
+
+        while(current != null){
+            nextPtr=current.next;
+            current.next=prePtr;
+            prePtr=current;
+            current=nextPtr;
+        }
+        head=prePtr;
+        return;
+    }
+    // Implementation Using Recursion in LinkedList
+    public void reverseRec(Node curr, Node pre){
+        // Last Node of Linked List
+        if(curr.next==null){
+            head=curr;
+            curr.next=pre;
+            return;
+        }
+
+        Node nextPtr=curr.next;
+        curr.next=pre;
+        // Recursive Function call
+        reverseRec(nextPtr, curr);
+    }
 
     public static void main(String[] args) {
         Practice3 llist=new Practice3();
@@ -98,7 +127,16 @@ class Practice3{
         llist.displayLL();
 
         System.out.println("Deletion operation :");
-        llist.delete(3);
+        llist.delete(2);
+        llist.displayLL();
+
+        System.out.println("Reversal Operation :");
+        // Through Iterative approach
+        // llist.reverseLL();
+
+        // Through Recursion
+        llist.reverseRec(llist.head,null);
+        
         llist.displayLL();
     }
 }

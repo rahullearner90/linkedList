@@ -36,6 +36,20 @@ class LinkedList{
         }
         System.out.print(temp.data+" ");
     }
+    // Implementation of Reversal of linkedList
+    public void reverseLL(){
+        Node curr=head;
+        Node nextPtr=null;
+        Node prev=null;
+        while(curr != null){
+            nextPtr=curr.next;
+            curr.next=prev;
+
+            prev=curr;
+            curr=nextPtr;
+        }
+        head=prev;
+    }
     public static void main(String[] args) {
         LinkedList list=new LinkedList();
         list.insertionAtEnd(2);
@@ -50,5 +64,9 @@ class LinkedList{
         System.out.println("After Insertion of 10");
         list.displayLL();
         System.out.println();
+
+        System.out.println("Reversal of the LinkedList");
+        list.reverseLL();
+        list.displayLL();
     }
 }
