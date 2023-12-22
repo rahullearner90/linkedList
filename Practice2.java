@@ -35,11 +35,24 @@ public class Practice2 {
 // Displaying LinkedList
     public void displayLL(){
         Node current=head;
-        while(current.next != null){
+        while(current != null){
             System.out.print(current.data+" ");
             current=current.next;
         }
-        System.out.print(current.data+"\n");
+        System.out.println();
+        // System.out.print(current.data+"\n");
+    }
+// Implemetation of Reversal of linked list
+    public void reverseIterate(){
+        Node prev=null, curr=head,nextPtr=null;
+        while(curr!=null){
+            nextPtr=curr.next;
+            curr.next=prev;
+
+            prev=curr;
+            curr=nextPtr;
+        }
+        head=prev;
     }
     public static void main(String[] args) {
         Practice2 llist=new Practice2();
@@ -58,6 +71,10 @@ public class Practice2 {
         llist.insertAtBeginning(2);
         llist.insertAtBeginning(1);
         llist.insertAtBeginning(0);
+        llist.displayLL();
+
+        System.out.println("------------------");
+        llist.reverseIterate();
         llist.displayLL();
     }
 }

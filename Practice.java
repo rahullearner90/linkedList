@@ -32,14 +32,33 @@ public class Practice {
             System.out.print(temp.data+" ");
             temp=temp.next;
         }
-        System.out.print(temp.data+" ");
+        System.out.print(temp.data+" \n");
+    }
+    // Implemetation of Reversal of LinkedList
+    public void reverseIterative(){
+        Node curr=head;
+        Node nextPtr=null;
+        Node prevPtr=null;
+        while(curr != null){
+            nextPtr=curr.next;
+            curr.next=prevPtr;
+
+            prevPtr=curr;
+            curr=nextPtr;
+        }
+        head=prevPtr;
+        return;
     }
     public static void main(String[] args) {
         Practice list=new Practice();
+        list.insertionAtEnd(1);
+        list.insertionAtEnd(2);
         list.insertionAtEnd(3);
-        list.insertionAtEnd(6);
-        list.insertionAtEnd(9);
+        list.insertionAtEnd(4);
 
+        list.displayLL();
+
+        list.reverseIterative();
         list.displayLL();
     }
 }
