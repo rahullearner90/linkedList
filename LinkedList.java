@@ -80,6 +80,17 @@ class LinkedList{
             System.out.println("Loop Is Detected Here.");
         }
     }
+    // Implementation of Reversal of linkedList using Recursion
+    public void reverseRec(Node curr, Node prev){
+        if(curr.next==null){
+            head=curr;
+            curr.next=prev;
+            return;
+        }
+        Node nextPtr=curr.next;
+        curr.next=prev;
+        reverseRec(nextPtr, curr);
+    }
     public static void main(String[] args) {
         LinkedList list=new LinkedList();
         list.insertionAtEnd(2);
@@ -95,7 +106,7 @@ class LinkedList{
         System.out.println("After Insertion of 10");
         list.displayLL();
         System.out.println();
-
+        /* 
         System.out.println("Reversal of the LinkedList");
         list.reverseLL();
         list.displayLL();
@@ -111,5 +122,8 @@ class LinkedList{
         temp.next=list.head;
 
         list.detectLoop();
+        */
+        list.reverseRec(list.head, null);
+        list.displayLL();
     }
 }
